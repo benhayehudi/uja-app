@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePicker } from '../services/datePicker';
-import { SubmitFormService } from '../services/submitForm';
 const $ = require('jQuery');
 
 @Component({

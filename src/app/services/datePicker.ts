@@ -12,5 +12,5 @@ export function DatePicker() {
     document.getElementById('formDate').value = new Date().toDateInputValue();
   }
 
-  console.log(document.getElementById('formDate').value)
+  // console.log(document.getElementById('formDate').value);
 }
