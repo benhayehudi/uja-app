@@ -1,28 +1,48 @@
   <div>
     <h1>Survey</h1>
-    <form>
-      <div class="survey-row1">
-        Name: <input type="text" name="name">
-        Date: <input type="date" name="date">
-        Weather: <select name="weather">
-          <option value="sunny">Sunny</option>
-          <option value="cold">Cold</option>
-          <option value="Wet">Wet</option>
-          <option value="hot">Hot</option>
-          <option value="muggy">Muggy</option>
-        </select>
-      </div>
-      <div class="survey-row2">
-        Age:
-          <input type="radio" name="age" value="18-35" id="age1">18-35
-          <input type="radio" name="age" value="36-80" id="age2">36-80
-          <input type="radio" name="age" value="80+" id="age3">80+
-        Do you like snow?
-          <input type="checkbox" name="snow" value="yes">Yes
-          <input type="checkbox" name="snow" value="no">No
-        What is your favorite vegetable?
-          <input type="text" name="vegetable">
-      </div>
-      <input type="submit">
-    </form>
+    <div class="survey-content">
+      <form [formGroup]="rForm" (ngSubmit)="submitForm(rForm.value)">
+        <div class="survey-row">
+          <div id="survey-element">
+            Name: <input type="text" formControlName="name">
+            <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">You must supply a name.</div>
+          </div>
+          <div id="survey-element">
+            Date: <input type="date" formControlName="date">
+            <div class="alert" *ngIf="!rForm.controls['date'].valid && rForm.controls['date'].touched">Your date must be in the correct format.</div>
+          </div>
+          <div id="survey-element">
+            Weather: <select formControlName="weather">
+              <option value="sunny">Sunny</option>
+              <option value="cold">Cold</option>
+              <option value="Wet">Wet</option>
+              <option value="hot">Hot</option>
+              <option value="muggy">Muggy</option>
+          </select>
+          <div class="alert" *ngIf="!rForm.controls['weather'].valid && rForm.controls['weather'].touched">You must make a choice.</div>
+        </div>
+        </div>
+        <div class="survey-row">
+          <div id="survey-element">
+            Age:
+            <input type="radio" formControlName="age" value="18-35" id="age1">18-35
+            <input type="radio" formControlName="age" value="36-80" id="age2">36-80
+            <input type="radio" formControlName="age" value="80+" id="age3">80+
+            <div class="alert" *ngIf="!rForm.controls['age'].valid && rForm.controls['age'].touched">You must pick an age.</div>
+          </div>
+          <div id="survey-element">
+            Do you like snow?
+            <input type="checkbox" formControlName="snow" value="yes">Yes
+            <input type="checkbox" formControlName="snow" value="no">No
+            <div class="alert" *ngIf="!rForm.controls['snow'].valid && rForm.controls['snow'].touched">You must make a choice.</div>
+          </div>
+          <div id="survey-element">
+            What is your favorite vegetable?
+            <input type="text" formControlName="vegetable">
+            <div class="alert" *ngIf="!rForm.controls['vegetable'].valid && rForm.controls['vegetable'].touched">You must list your favorite vegetable.</div>
+          </div>
+        </div>
+        <input type="submit" value="Submit Form" [disabled]="!rForm.valid">
+      </form>
+    </div>
   </div>

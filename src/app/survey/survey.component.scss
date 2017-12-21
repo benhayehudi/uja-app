@@ -1,0 +1,22 @@
+.survey-content {
+  display: flex;
+  // flex-direction: column;
+  min-width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#survey-element {
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+}
+
+.survey-row {
+  display: flex;
+  width: 100%;
+}
+
+.alert {
+  color: red;
+}
