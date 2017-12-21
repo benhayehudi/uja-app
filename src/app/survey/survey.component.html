@@ -1,14 +1,14 @@
   <div>
     <h1>Survey</h1>
     <div class="survey-content">
-      <form [formGroup]="rForm" (ngSubmit)="submitForm(rForm.value)">
+      <form [formGroup]="rForm" (ngSubmit)="SubmitForm(rForm.value)">
         <div class="survey-row">
           <div id="survey-element">
-            Name: <input type="text" formControlName="name">
+            Name: <input type="text" formControlName="name" id="name">
             <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">You must supply a name.</div>
           </div>
           <div id="survey-element">
-            Date: <input type="date" formControlName="date">
+            Date: <input type="date" formControlName="date" id="formDate">
             <div class="alert" *ngIf="!rForm.controls['date'].valid && rForm.controls['date'].touched">Your date must be in the correct format.</div>
           </div>
           <div id="survey-element">
@@ -42,7 +42,7 @@
             <div class="alert" *ngIf="!rForm.controls['vegetable'].valid && rForm.controls['vegetable'].touched">You must list your favorite vegetable.</div>
           </div>
         </div>
-        <input type="submit" value="Submit Form" [disabled]="!rForm.valid">
+        <input type="submit" value="Submit Form" [disabled]="!rForm.valid" ng-click="SubmitFormService();">
       </form>
     </div>
   </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePicker } from '../services/datePicker';
+import { SubmitFormService } from '../services/submitForm';
+const $ = require('jQuery');
 
 @Component({
   selector: 'app-survey',
@@ -11,6 +14,7 @@ export class SurveyComponent implements OnInit {
   rForm: FormGroup;
   post: any;
   name:string = '';
+  vegetable:string = '';
 
   constructor(private fb: FormBuilder) {
     this.rForm = fb.group({
@@ -24,16 +28,28 @@ export class SurveyComponent implements OnInit {
     });
    }
 
-   submitForm(survey) {
-    this.name = survey.name;
-    this.date = survey.date;
-    this.weather = survey.weather;
-    this.age = survey.age;
-    this.snow = survey.snow;
-    this.vegetable = survey.vegetable;
+   SubmitForm(rForm) {
+    // this.name = rForm.name;
+    // this.date = rForm.date;
+    // this.weather = rForm.weather;
+    // this.age = rForm.age;
+    // this.snow = rForm.snow;
+    // this.vegetable = rForm.vegetable;
+    $.ajax({
+    type: "POST",
+    url: "https://www.ujafedny.dev/apiv2/survey",
+    data: rForm,
+    success: function(msg){
+          alert("Thank you for your survey.");
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+       alert("Error posting your survey.");
+    }
+  });
   }
 
   ngOnInit() {
+
   }
 
 }
